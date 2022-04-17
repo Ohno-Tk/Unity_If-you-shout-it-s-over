@@ -29,7 +29,7 @@ class LevelMeter : MonoBehaviour
     void Update()
     {
         //dB値からlevelMeterImage用のfillAountの値に変換
-        float fillAmountValue = dB_ToFillAmountValue(micAS.now_dB);
+        float fillAmountValue = dB_ToFillAmountValue(micAS.GetNow_dB);
  
         //fillAmount値更新
         this.levelMeterImage.fillAmount = fillAmountValue;
