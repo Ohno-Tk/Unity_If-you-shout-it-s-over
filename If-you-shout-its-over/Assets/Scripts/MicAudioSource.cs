@@ -18,8 +18,10 @@ class MicAudioSource : MonoBehaviour
     AudioSource micAS = null;
 
     //現在のdB値
-    private float _now_dB;
-    public float now_dB { get { return _now_dB; } }
+    private float Now_dB;
+    public float GetNow_dB { get { return Now_dB; } }
+
+    public float GetSoundVolume { get { return Now_dB+80.0f; } }
 
     void Start()
     {
@@ -66,9 +68,10 @@ class MicAudioSource : MonoBehaviour
         //振幅をdB（デシベル）に変換
         float dB = 20.0f * Mathf.Log10(aveAmp);
 
-        //現在値（now_dB）を更新
-        _now_dB = dB;
+        //現在値（Now_dB）を更新
+        Now_dB = dB;
 
-        //Debug.Log("now_dB:"+_now_dB);
+        //Debug.Log("now_dB:"+Now_dB);
+        //Debug.Log("現在の音量:"+(Now_dB+80.0f));
     }
 }
