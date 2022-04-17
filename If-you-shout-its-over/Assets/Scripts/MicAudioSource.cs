@@ -21,12 +21,6 @@ class MicAudioSource : MonoBehaviour
     private float _now_dB;
     public float now_dB { get { return _now_dB; } }
 
-    private void Awake()
-    {
-        //AudioSourceコンポーネント取得
-        //micAS = GetComponent<AudioSource>();
-    }
-
     void Start()
     {
         //AudioSourceコンポーネント取得
@@ -36,7 +30,16 @@ class MicAudioSource : MonoBehaviour
         this.MicStart();
     }
 
-    public void MicStart()
+    void Update()
+    {
+        if (micAS.isPlaying)
+        {
+            Sound_pressureToDecibel();
+        }
+    }
+
+    // マイクスタート
+    private void MicStart()
     {
         //AudioSourceのClipにマイクデバイスをセット
         micAS.clip = Microphone.Start(null, true, 1, SAMPLE_RATE);
@@ -48,26 +51,24 @@ class MicAudioSource : MonoBehaviour
         micAS.Play();
     }
 
-    void Update()
+    // デシベル変換
+    private void Sound_pressureToDecibel()
     {
-        if (micAS.isPlaying)
-        {
-            //GetOutputData用のバッファを準備
-            float[] data = new float[MOVING_AVE_SAMPLE];
+        //GetOutputData用のバッファを準備
+        float[] data = new float[MOVING_AVE_SAMPLE];
 
-            //AudioSourceから出力されているサンプルを取得
-            micAS.GetOutputData(data, 0);
+        //AudioSourceから出力されているサンプルを取得
+        micAS.GetOutputData(data, 0);
 
-            //バッファ内の平均振幅を取得（絶対値を平均する）
-            float aveAmp = data.Average(s => Mathf.Abs(s));
+        //バッファ内の平均振幅を取得（絶対値を平均する）
+        float aveAmp = data.Average(s => Mathf.Abs(s));
 
-            //振幅をdB（デシベル）に変換
-            float dB = 20.0f * Mathf.Log10(aveAmp);
+        //振幅をdB（デシベル）に変換
+        float dB = 20.0f * Mathf.Log10(aveAmp);
 
-            //現在値（now_dB）を更新
-            _now_dB = dB;
+        //現在値（now_dB）を更新
+        _now_dB = dB;
 
-            Debug.Log("now_dB:"+_now_dB);
-        }
+        //Debug.Log("now_dB:"+_now_dB);
     }
 }
