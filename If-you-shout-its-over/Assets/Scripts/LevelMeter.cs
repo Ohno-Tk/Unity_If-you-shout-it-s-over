@@ -19,20 +19,26 @@ class LevelMeter : MonoBehaviour
     //dBを取得する対象のmicAudioSource
     [SerializeField]
     private MicAudioSource micAS = null;
+
+    private float value = 0.0f;
+
+    public float VolumePercent { get { return value * 100.0f; } }
  
     void Awake()
     {
         //更新する対象のImageを取得
         levelMeterImage = GetComponent<Image>();
+
+        value = dB_ToFillAmountValue(micAS.GetNow_dB);
     }
  
     void Update()
     {
         //dB値からlevelMeterImage用のfillAountの値に変換
-        float fillAmountValue = dB_ToFillAmountValue(micAS.GetNow_dB);
+        value = dB_ToFillAmountValue(micAS.GetNow_dB);
  
         //fillAmount値更新
-        this.levelMeterImage.fillAmount = fillAmountValue;
+        this.levelMeterImage.fillAmount = value;
     }
  
     /// <summary>
@@ -51,5 +57,5 @@ class LevelMeter : MonoBehaviour
         float fillAountValue = 1.0f + (modified_dB / (dB_Max - dB_Min));
         return fillAountValue;
     }
- 
+
 }
