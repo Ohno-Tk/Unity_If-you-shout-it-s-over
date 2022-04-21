@@ -21,8 +21,6 @@ class MicAudioSource : MonoBehaviour
     private float Now_dB;
     public float GetNow_dB { get { return Now_dB; } }
 
-    public float GetSoundVolume { get { return Now_dB+80.0f; } }
-
     void Start()
     {
         //AudioSourceコンポーネント取得

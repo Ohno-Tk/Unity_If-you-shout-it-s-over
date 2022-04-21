@@ -6,19 +6,30 @@ public class SoundCheck : MonoBehaviour
 {
 
     [SerializeField]
-    private MicAudioSource micAS = null;
-    // Start is called before the first frame update
+    private LevelMeter micLevelMeter = null;
+
+     [SerializeField]
+    private Counter Count = null;
+
+    private bool CountFlag = false;
+
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(micAS.GetSoundVolume > 60)
+        Debug.Log(micLevelMeter.VolumePercent);
+
+        if(micLevelMeter.VolumePercent > 60 && CountFlag == true)
         {
-            Debug.Log("now_dB:");
+            Count.CountUp();
+            CountFlag = false;
+        }
+        else if(micLevelMeter.VolumePercent < 50)
+        {
+            CountFlag = true;
         }
     }
 }
