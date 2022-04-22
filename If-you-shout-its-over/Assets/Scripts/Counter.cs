@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Counter : MonoBehaviour
 {
     private Text text;
-    private int NowCount = 1; // 現在のカウント
+    private int NowCount = 0; // 現在のカウント
 
     // Start is called before the first frame update
     void Start()

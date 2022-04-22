@@ -29,11 +29,13 @@ class MicAudioSource : MonoBehaviour
         //フレーム更新開始直後にマイクデバイスをスタートする
         this.MicStart();
 
-        Sound_pressureToDecibel();
+        Debug.Log("MicAudioSource.Start()");
     }
 
     void Update()
     {
+        //Debug.Log("micAS.isPlaying:" + micAS.isPlaying);
+
         if (micAS.isPlaying)
         {
             Sound_pressureToDecibel();
@@ -43,11 +45,13 @@ class MicAudioSource : MonoBehaviour
     // マイクスタート
     private void MicStart()
     {
+        Debug.Log("MicAudioSource.MicStart()");
+
         //AudioSourceのClipにマイクデバイスをセット
         micAS.clip = Microphone.Start(null, true, 1, SAMPLE_RATE);
 
         //マイクデバイスの準備ができるまで待つ
-        while (!(Microphone.GetPosition("") > 0)) { return; }
+        while (!(Microphone.GetPosition("") > 0)) {}
 
         //AudioSouceからの出力を開始
         micAS.Play();
@@ -71,7 +75,7 @@ class MicAudioSource : MonoBehaviour
         //現在値（Now_dB）を更新
         Now_dB = dB;
 
-        //Debug.Log("now_dB:"+Now_dB);
+        Debug.Log("now_dB:"+Now_dB);
         //Debug.Log("現在の音量:"+(Now_dB+80.0f));
     }
 }
