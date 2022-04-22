@@ -20,7 +20,7 @@ public class SoundCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(micLevelMeter.VolumePercent);
+        Debug.Log("音量(%)" + micLevelMeter.VolumePercent);
 
         if(micLevelMeter.VolumePercent > 60 && CountFlag == true)
         {

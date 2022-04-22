@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
- 
+
 class LevelMeter : MonoBehaviour
 {
     //更新する対象のlevelMeter(uGUI Image)
     Image levelMeterImage = null;
- 
+
     //このdBでlevelMeter表示の下限に到達する
     [SerializeField]
     private float dB_Min= -80.0f;
- 
+
     //このdBでlevelMeter表示の上限に到達する
     [SerializeField]
     private float dB_Max = -0.0f;
-     
+
     //dBを取得する対象のmicAudioSource
     [SerializeField]
     private MicAudioSource micAS = null;
@@ -23,7 +23,7 @@ class LevelMeter : MonoBehaviour
     private float value = 0.0f;
 
     public float VolumePercent { get { return value * 100.0f; } }
- 
+
     void Awake()
     {
         //更新する対象のImageを取得
@@ -31,16 +31,16 @@ class LevelMeter : MonoBehaviour
 
         value = dB_ToFillAmountValue(micAS.GetNow_dB);
     }
- 
+
     void Update()
     {
         //dB値からlevelMeterImage用のfillAountの値に変換
         value = dB_ToFillAmountValue(micAS.GetNow_dB);
- 
+
         //fillAmount値更新
         this.levelMeterImage.fillAmount = value;
     }
- 
+
     /// <summary>
     /// dB_Minとdb_Maxに基づいてdBをfillAmount値に変換
     /// </summary>
@@ -52,7 +52,7 @@ class LevelMeter : MonoBehaviour
         float modified_dB = dB;
         if (modified_dB > dB_Max) { modified_dB = dB_Max; }
         else if (modified_dB < dB_Min) { modified_dB = dB_Min; }
- 
+
         //fillAmount値に変換(dB_Min=0.0f, dB_Max=1.0f)
         float fillAountValue = 1.0f + (modified_dB / (dB_Max - dB_Min));
         return fillAountValue;
