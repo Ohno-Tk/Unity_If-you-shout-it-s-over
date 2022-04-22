@@ -28,6 +28,8 @@ class MicAudioSource : MonoBehaviour
 
         //フレーム更新開始直後にマイクデバイスをスタートする
         this.MicStart();
+
+        Sound_pressureToDecibel();
     }
 
     void Update()
@@ -45,7 +47,7 @@ class MicAudioSource : MonoBehaviour
         micAS.clip = Microphone.Start(null, true, 1, SAMPLE_RATE);
 
         //マイクデバイスの準備ができるまで待つ
-        while (!(Microphone.GetPosition("") > 0)) { }
+        while (!(Microphone.GetPosition("") > 0)) { return; }
 
         //AudioSouceからの出力を開始
         micAS.Play();
