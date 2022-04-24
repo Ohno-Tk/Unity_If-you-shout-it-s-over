@@ -75,7 +75,7 @@ class MicAudioSource : MonoBehaviour
         //現在値（Now_dB）を更新
         Now_dB = dB;
 
-        Debug.Log("now_dB:"+Now_dB);
+        //Debug.Log("now_dB:"+Now_dB);
         //Debug.Log("現在の音量:"+(Now_dB+80.0f));
     }
 }

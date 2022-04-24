@@ -11,23 +11,30 @@ public class SoundCheck : MonoBehaviour
      [SerializeField]
     private Counter Count = null;
 
+    // 
+    private int VolumeOutValue = 0;
     private bool CountFlag = false;
+
+    public int SetVolumeOutValue { set { VolumeOutValue = value; } }
 
     void Start()
     {
+
+        VolumeOutValue = 60;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("音量(%)" + micLevelMeter.VolumePercent);
+        Debug.Log("音量(%)" + VolumeOutValue);
 
-        if(micLevelMeter.VolumePercent > 60 && CountFlag == true)
+        if(VolumeOutValue < micLevelMeter.VolumePercent && CountFlag == true)
         {
             Count.CountUp();
             CountFlag = false;
         }
-        else if(micLevelMeter.VolumePercent < 50)
+        else if(micLevelMeter.VolumePercent < VolumeOutValue)
         {
             CountFlag = true;
         }
