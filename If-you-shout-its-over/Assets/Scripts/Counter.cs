@@ -32,14 +32,6 @@ public class Counter : MonoBehaviour
         TextIntToString();
     }
 
-    // カウントダウン
-    public void CountDown()
-    {
-        NowCount--;
-
-        TextIntToString();
-    }
-
     // intを2桁表示にしてstringに変換
     private void TextIntToString()
     {
