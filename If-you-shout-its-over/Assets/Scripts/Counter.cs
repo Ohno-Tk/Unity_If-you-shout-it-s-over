@@ -37,4 +37,11 @@ public class Counter : MonoBehaviour
     {
         text.text = NowCount.ToString("00");
     }
+
+    public void CountReset()
+    {
+        NowCount = 0;
+
+        TextIntToString();
+    }
 }
