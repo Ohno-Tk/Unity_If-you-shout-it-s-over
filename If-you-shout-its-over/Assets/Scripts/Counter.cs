@@ -16,14 +16,6 @@ public class Counter : MonoBehaviour
         TextIntToString();
     }
 
-    // カウントの初期化
-    public void InitializeCount()
-    {
-        NowCount = 0;
-
-        TextIntToString();
-    }
-
     // カウントアップ
     public void CountUp()
     {
@@ -36,8 +28,11 @@ public class Counter : MonoBehaviour
     private void TextIntToString()
     {
         text.text = NowCount.ToString("00");
+
+        Debug.Log("現在のカウント" + NowCount + "回");
     }
 
+    // カウントの初期化
     public void CountReset()
     {
         NowCount = 0;
