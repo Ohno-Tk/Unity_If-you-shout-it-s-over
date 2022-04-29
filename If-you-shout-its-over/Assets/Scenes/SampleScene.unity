@@ -3705,6 +3705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd8416d34fac04438fbf78a1ed9f679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  micAS: {fileID: 368434215}
 --- !u!114 &2141691872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3756,12 +3757,12 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2141691869}
-        m_MethodName: 
+      - m_Target: {fileID: 2141691871}
+        m_MethodName: SetMic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

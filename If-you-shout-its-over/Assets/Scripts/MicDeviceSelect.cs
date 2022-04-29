@@ -7,9 +7,10 @@ public class MicDeviceSelect : MonoBehaviour
 {
     private Dropdown micDropdown;
 
-    
+    [SerializeField]
+    private MicAudioSource micAS = null;
 
-    private void Awake()
+    private void Start()
     {
         // Dropdownコンポーネント取得
         micDropdown = GetComponent<Dropdown>();
@@ -19,13 +20,21 @@ public class MicDeviceSelect : MonoBehaviour
         {
             Debug.Log(i + " : " + Microphone.devices[i]);
             micDropdown.options.Add(new Dropdown.OptionData { text = Microphone.devices[i] });
+            //Debug.Log(" 型: " + Microphone.devices[i].GetType());
         }
 
+        // ドロップダウンの一番最初を表示
         micDropdown.RefreshShownValue();
+
+        Debug.Log(" index: " + micDropdown.value);
+
+        micAS.MicStart(Microphone.devices[micDropdown.value]);
     }
 
     public void SetMic()
     {
+        Debug.Log(" マイク名: " + Microphone.devices[micDropdown.value]);
 
+        micAS.MicStart(Microphone.devices[micDropdown.value]);
     }
 }
