@@ -45,7 +45,7 @@ class MicAudioSource : MonoBehaviour
         micAS.clip = Microphone.Start(MicDeviceName, true, 1, SAMPLERATE);
 
         //マイクデバイスの準備ができるまで待つ
-        while (!(Microphone.GetPosition("") > 0))
+        while (!(Microphone.GetPosition(MicDeviceName) > 0))
         {
             //Invoke(nameof(NotMic), 5.0f);
         }
