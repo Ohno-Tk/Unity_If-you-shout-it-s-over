@@ -27,7 +27,7 @@ class MicAudioSource : MonoBehaviour
         micAS = GetComponent<AudioSource>();
 
         //フレーム更新開始直後にマイクデバイスをスタートする
-        //this.MicStart();
+        MicStart("");
 
         Debug.Log("MicAudioSource.Start()");
     }
@@ -48,7 +48,8 @@ class MicAudioSource : MonoBehaviour
         Debug.Log("MicAudioSource.MicStart()");
 
         //AudioSourceのClipにマイクデバイスをセット
-        micAS.clip = Microphone.Start(MicDeviceName, true, 1, SAMPLE_RATE);
+        //micAS.clip = Microphone.Start(MicDeviceName, true, 1, SAMPLE_RATE);
+        micAS.clip = Microphone.Start(null, true, 1, SAMPLE_RATE);
 
         //マイクデバイスの準備ができるまで待つ
         while (!(Microphone.GetPosition("") > 0)) {}
