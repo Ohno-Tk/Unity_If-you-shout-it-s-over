@@ -15,20 +15,16 @@ public class MicDeviceSelect : MonoBehaviour
         // Dropdownコンポーネント取得
         micDropdown = GetComponent<Dropdown>();
 
+        // マイクデバイスを取得してドロップダウンに追加
         GetMicDevice();
 
+        // マイクスタート
         micAS.MicStart(Microphone.devices[micDropdown.value]);
     }
 
-    // マイクを動かす
-    public void SetMic()
-    {
-        Debug.Log(" マイク名: " + Microphone.devices[micDropdown.value]);
-
-        micAS.MicStart(Microphone.devices[micDropdown.value]);
-    }
-
-    //マイクデバイスを取得してドロップダウンに追加
+    /*
+        function: マイクデバイスを取得してドロップダウンに追加
+    */
     public void GetMicDevice()
     {
         // ドロップダウンに追加
@@ -36,7 +32,6 @@ public class MicDeviceSelect : MonoBehaviour
         {
             Debug.Log(i + " : " + Microphone.devices[i]);
             micDropdown.options.Add(new Dropdown.OptionData { text = Microphone.devices[i] });
-            //Debug.Log(" 型: " + Microphone.devices[i].GetType());
         }
 
         // ドロップダウンの一番最初を表示

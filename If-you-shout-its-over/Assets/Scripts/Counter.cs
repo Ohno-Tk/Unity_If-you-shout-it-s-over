@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
-    private Text text;
+    private Text text; // uGUIのText
     private int NowCount = 0; // 現在のカウント
 
-    // Start is called before the first frame update
     void Start()
     {
         text = this.GetComponent<Text> ();
@@ -16,7 +15,9 @@ public class Counter : MonoBehaviour
         TextIntToString();
     }
 
-    // カウントアップ
+    /*
+        function: カウントアップ
+    */
     public void CountUp()
     {
         NowCount++;
@@ -24,19 +25,24 @@ public class Counter : MonoBehaviour
         TextIntToString();
     }
 
-    // intを2桁表示にしてstringに変換
-    private void TextIntToString()
-    {
-        text.text = NowCount.ToString("00");
-
-        Debug.Log("現在のカウント" + NowCount + "回");
-    }
-
-    // カウントの初期化
+    /*
+        function: カウントの初期化
+    */
     public void CountReset()
     {
         NowCount = 0;
 
         TextIntToString();
+    }
+
+    /*
+        function: intをN桁表示にしてstringに変換
+    */
+    private void TextIntToString()
+    {
+        // N桁表示
+        text.text = NowCount.ToString("00");
+
+        //Debug.Log("現在のカウント" + NowCount + "回");
     }
 }
