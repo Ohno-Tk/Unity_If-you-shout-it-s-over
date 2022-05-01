@@ -2,11 +2,15 @@
 
 public class Application_Quit : MonoBehaviour
 {
-    public void Quit() {
-        #if UNITY_EDITOR
+    /*
+        function: アプリケーションの終了
+    */
+    public void Quit()
+    {
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #elif UNITY_STANDALONE
+#elif UNITY_STANDALONE
         UnityEngine.Application.Quit();
-        #endif
+#endif
     }
 }

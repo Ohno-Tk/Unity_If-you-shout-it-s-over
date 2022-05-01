@@ -5,20 +5,16 @@ using System.Linq;
 
 class MicAudioSource : MonoBehaviour
 {
-    //サンプリング周波数
-    static readonly int SAMPLE_RATE = 48000;
+    const int SAMPLERATE = 48000;// サンプリング周波数
 
-    //この秒数の幅で振幅の平均値を取ったものでdB値を更新
-    static readonly float MOVING_AVE_TIME = 0.05f;
+    const float MOVINGAVETIME = 0.05f;// この秒数の幅で振幅の平均値を取ったものでdB値を更新
 
-    //MOVING_AVE_TIMEに相当するサンプル数
-    static readonly int MOVING_AVE_SAMPLE = (int)(SAMPLE_RATE * MOVING_AVE_TIME);
+    const int MOVING_AVE_SAMPLE = (int)(SAMPLERATE * MOVINGAVETIME);// MOVINGAVETIMEに相当するサンプル数
 
-    //マイクのClipをセットする為のAudioSource
-    AudioSource micAS = null;
+    AudioSource micAS = null;// マイクのClipをセットする為のAudioSource
 
-    //現在のdB値
-    private float Now_dB;
+    private float Now_dB;// 現在のdB値
+
     public float GetNow_dB { get { return Now_dB; } }
 
     void Start()
@@ -27,38 +23,40 @@ class MicAudioSource : MonoBehaviour
         micAS = GetComponent<AudioSource>();
 
         //フレーム更新開始直後にマイクデバイスをスタートする
-        MicStart("");
-
-        Debug.Log("MicAudioSource.Start()");
+        //MicStart("");
     }
 
     void Update()
     {
-        //Debug.Log("micAS.isPlaying:" + micAS.isPlaying);
-
         if (micAS.isPlaying)
         {
             Sound_pressureToDecibel();
         }
     }
 
-    // マイクスタート
+    /*
+        function: マイクスタート
+
+        param MicDeviceName: マイクデバイス名
+    */
     public void MicStart(string MicDeviceName)
     {
-        Debug.Log("MicAudioSource.MicStart()");
-
         //AudioSourceのClipにマイクデバイスをセット
-        //micAS.clip = Microphone.Start(MicDeviceName, true, 1, SAMPLE_RATE);
-        micAS.clip = Microphone.Start(null, true, 1, SAMPLE_RATE);
+        micAS.clip = Microphone.Start(MicDeviceName, true, 1, SAMPLERATE);
 
         //マイクデバイスの準備ができるまで待つ
-        while (!(Microphone.GetPosition("") > 0)) {}
+        while (!(Microphone.GetPosition("") > 0))
+        {
+            //Invoke(nameof(NotMic), 5.0f);
+        }
 
         //AudioSouceからの出力を開始
         micAS.Play();
     }
 
-    // デシベル変換
+    /*
+        function: デシベル変換
+    */
     private void Sound_pressureToDecibel()
     {
         //GetOutputData用のバッファを準備
@@ -75,8 +73,19 @@ class MicAudioSource : MonoBehaviour
 
         //現在値（Now_dB）を更新
         Now_dB = dB;
+    }
 
-        //Debug.Log("now_dB:"+Now_dB);
-        //Debug.Log("現在の音量:"+(Now_dB+80.0f));
+    /*
+        function: マイクが無い時の処理
+    */
+    private void NotMic()
+    {
+        Debug.Log("マイクがありません");
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+        UnityEngine.Application.Quit();
+#endif
     }
 }

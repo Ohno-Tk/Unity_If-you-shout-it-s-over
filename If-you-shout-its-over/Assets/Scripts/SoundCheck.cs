@@ -8,26 +8,25 @@ public class SoundCheck : MonoBehaviour
     [SerializeField]
     private LevelMeter micLevelMeter = null;
 
-     [SerializeField]
+    [SerializeField]
     private Counter Count = null;
 
-    // 
-    private int VolumeOutValue = 0;
-    private bool CountFlag = false;
+    private int VolumeOutValue = 0;// アウトの値
+
+    private bool CountFlag = false;// 連続カウント防止用フラグ
 
     public int SetVolumeOutValue { set { VolumeOutValue = value; } }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("音量(%)" + micLevelMeter.VolumePercent);
-        //Debug.Log("アウト音量(%)" + VolumeOutValue);
-
+        // アウト時
         if(VolumeOutValue < micLevelMeter.VolumePercent && CountFlag == true)
         {
             Count.CountUp();
             CountFlag = false;
         }
+        // それ以外
         else if(VolumeOutValue > micLevelMeter.VolumePercent)
         {
             CountFlag = true;

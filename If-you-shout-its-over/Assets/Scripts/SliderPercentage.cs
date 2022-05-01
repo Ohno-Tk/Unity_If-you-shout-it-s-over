@@ -5,8 +5,14 @@ using UnityEngine.UI;
 
 public class SliderPercentage : MonoBehaviour
 {
-    public void TextChange(int value)
+    /*
+        function: スライダーの値をテキスト変換
+
+        param slidervalue: スライダー値
+
+    */
+    public void TextChange(int slidervalue)
     {
-        GetComponent<Text>().text = value + "%";
+        GetComponent<Text>().text = slidervalue + "%";
     }
 }

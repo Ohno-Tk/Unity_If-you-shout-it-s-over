@@ -13,29 +13,37 @@ public class SetttingSlider : MonoBehaviour
 
     private Slider slider;
 
-    // Start is called before the first frame update
     void Start()
     {
         slider = GetComponent<Slider>();
 
+        // 各種設定
         Settting();
     }
 
-    // 各種設定
+    /*
+        function: 各種設定
+    */
     public void Settting()
     {
+        // 5刻みでスライダーを表示する。
         Graduate();
 
+        // スライダーの値をテキスト変換
         SliderPercentage.TextChange((int)slider.value);
 
+        // スライダーの値をアウト判定の値に代入
         soundCheck.SetVolumeOutValue = (int)slider.value;
     }
 
-    //5刻みでスライダーを表示する。
+    /*
+        function: 5刻みでスライダーを表示する。
+    */
     private void Graduate()
     {
         float sliderValue = slider.value;
 
+        // 5で割って整数に丸めて5倍してやり、5分ごとの値とする
         sliderValue = Mathf.Round(sliderValue / 5) * 5;
 
         slider.value = sliderValue;
