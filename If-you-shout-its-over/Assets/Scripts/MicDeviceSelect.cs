@@ -25,7 +25,7 @@ public class MicDeviceSelect : MonoBehaviour
     /*
         function: マイクデバイスを取得してドロップダウンに追加
     */
-    public void GetMicDevice()
+    private void GetMicDevice()
     {
         // ドロップダウンに追加
         for (int i = 0; i < Microphone.devices.Length; i++)
