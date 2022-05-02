@@ -22,8 +22,8 @@ class MicAudioSource : MonoBehaviour
         //AudioSourceコンポーネント取得
         micAS = GetComponent<AudioSource>();
 
-        //フレーム更新開始直後にマイクデバイスをスタートする
-        //MicStart("");
+        // マイクデバイスをスタートする
+        MicStart("");
     }
 
     void Update()
@@ -42,13 +42,12 @@ class MicAudioSource : MonoBehaviour
     public void MicStart(string MicDeviceName)
     {
         //AudioSourceのClipにマイクデバイスをセット
-        micAS.clip = Microphone.Start(MicDeviceName, true, 1, SAMPLERATE);
+        //micAS.clip = Microphone.Start(MicDeviceName, true, 1, SAMPLERATE);
+        micAS.clip = Microphone.Start(null, true, 1, SAMPLERATE);
 
         //マイクデバイスの準備ができるまで待つ
-        while (!(Microphone.GetPosition(MicDeviceName) > 0))
-        {
-            //Invoke(nameof(NotMic), 5.0f);
-        }
+        while (!(Microphone.GetPosition(MicDeviceName) > 0)){}
+        //while (!(Microphone.GetPosition("") > 0)){}
 
         //AudioSouceからの出力を開始
         micAS.Play();
@@ -73,19 +72,5 @@ class MicAudioSource : MonoBehaviour
 
         //現在値（Now_dB）を更新
         Now_dB = dB;
-    }
-
-    /*
-        function: マイクが無い時の処理
-    */
-    private void NotMic()
-    {
-        Debug.Log("マイクがありません");
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_STANDALONE
-        UnityEngine.Application.Quit();
-#endif
     }
 }
