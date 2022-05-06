@@ -61,49 +61,49 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11338}
+      Script: {instanceID: 11340}
     - Class: 114
-      Script: {instanceID: 11528}
+      Script: {instanceID: 11530}
     - Class: 114
-      Script: {instanceID: 11542}
+      Script: {instanceID: 11544}
     - Class: 114
-      Script: {instanceID: 11546}
+      Script: {instanceID: 11548}
     - Class: 114
-      Script: {instanceID: 11586}
+      Script: {instanceID: 11588}
     - Class: 114
-      Script: {instanceID: 11964}
+      Script: {instanceID: 11966}
     - Class: 114
-      Script: {instanceID: 12010}
+      Script: {instanceID: 12012}
     - Class: 114
-      Script: {instanceID: 12076}
+      Script: {instanceID: 12078}
     - Class: 114
-      Script: {instanceID: 12338}
+      Script: {instanceID: 12340}
     - Class: 114
-      Script: {instanceID: 12626}
+      Script: {instanceID: 12628}
     - Class: 114
-      Script: {instanceID: 13246}
+      Script: {instanceID: 13248}
     - Class: 114
-      Script: {instanceID: 13274}
+      Script: {instanceID: 13276}
     - Class: 114
-      Script: {instanceID: 13324}
+      Script: {instanceID: 13326}
     - Class: 114
-      Script: {instanceID: 13422}
+      Script: {instanceID: 13424}
     - Class: 114
-      Script: {instanceID: 13452}
+      Script: {instanceID: 13454}
     - Class: 114
-      Script: {instanceID: 13662}
+      Script: {instanceID: 13664}
     - Class: 114
-      Script: {instanceID: 13676}
+      Script: {instanceID: 13678}
     - Class: 114
-      Script: {instanceID: 13732}
+      Script: {instanceID: 13734}
     - Class: 114
-      Script: {instanceID: 13744}
+      Script: {instanceID: 13746}
     - Class: 114
-      Script: {instanceID: 13752}
+      Script: {instanceID: 13754}
     - Class: 114
-      Script: {instanceID: 13772}
+      Script: {instanceID: 13774}
     - Class: 114
-      Script: {instanceID: 13796}
+      Script: {instanceID: 13798}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -598,4 +598,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: "C:/Users/Ohno.Takuya/Downloads/\u53EB\u3093\u3060\u3089\u7D42\u4E86\uFF01\uFF1F/If-you-shout-its-over.exe"
+  playerPath: "C:/Users/Ohno.Takuya/Downloads/\u53EB\u3093\u3060\u3089\u7D42\u4E86\uFF01\uFF1F/ShoutisGameOver.exe"
