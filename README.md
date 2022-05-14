@@ -18,7 +18,7 @@
  
 # Requirement(ライブラリなど)
  
-- Unity 2019.4.29f
+- <img src="https://img.shields.io/badge/-Unity-000000.svg?logo=unity&style=plastic"> 2019.4.29f
  
 # Note(注意点など)
  
