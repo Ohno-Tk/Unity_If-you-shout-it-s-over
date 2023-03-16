@@ -17,6 +17,11 @@ public class SoundCheck : MonoBehaviour
 
     public int SetVolumeOutValue { set { VolumeOutValue = value; } }
 
+    void Start()
+    {
+        VolumeOutValue = 60;
+    }
+
     // Update is called once per frame
     void Update()
     {
