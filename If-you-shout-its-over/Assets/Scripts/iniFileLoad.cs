@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class iniFileLoad : MonoBehaviour
 {
+    public GameObject Camera;
+
     private string iniFilePath;
     private string iniFileName = "setting.ini";
 
@@ -15,10 +17,16 @@ public class iniFileLoad : MonoBehaviour
     {
         iniFilePath = Application.streamingAssetsPath + "\\";
 
-        //string val = IniFileUtils.read("D:\\programming\\Unity_ShoutSupport\\If-you-shout-its-over\\Assets\\test.ini", "drivers", "wave", "", System.Text.Encoding.GetEncoding("UTF-8"));
-        string val = IniFileUtils.read(iniFilePath + iniFileName, "Background", "green");
+        // iniファイルの内容を取得
+        string string_red = IniFileUtils.read(iniFilePath + iniFileName, "Background", "red");
+        string string_green = IniFileUtils.read(iniFilePath + iniFileName, "Background", "green");
+        string string_blue = IniFileUtils.read(iniFilePath + iniFileName, "Background", "blue");
 
-        Debug.Log(val);
-        Debug.Log(Directory.GetCurrentDirectory());
+
+        // データ適用
+        byte red = (byte)int.Parse(string_red);
+        byte green = (byte)int.Parse(string_green);
+        byte blue = (byte)int.Parse(string_blue);
+        Camera.GetComponent<UnityEngine.Camera>().backgroundColor = new Color32(red, green, blue, 0);
     }
 }
