@@ -23,7 +23,7 @@ class MicAudioSource : MonoBehaviour
         micAS = GetComponent<AudioSource>();
 
         // マイクデバイスをスタートする
-        MicStart("");
+        MicStart(Microphone.devices[0]);
     }
 
     void Update()
