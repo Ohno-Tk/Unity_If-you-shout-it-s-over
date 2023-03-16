@@ -33,6 +33,8 @@ class LevelMeter : MonoBehaviour
         //dB値からlevelMeterImage用のfillAountの値に変換
         volume = dBToFillAmountValue(micAS.GetNow_dB);
 
+        Debug.Log(micAS.GetNow_dB);
+
         //fillAmount値更新
         this.levelMeterImage.fillAmount = volume;
     }

@@ -11,7 +11,7 @@ public class SoundCheck : MonoBehaviour
     [SerializeField]
     private Counter Count = null;
 
-    private int VolumeOutValue = 0;// アウトの値
+    private int VolumeOutValue = 0;// アウトの値(デシベル換算)
 
     private bool CountFlag = false;// 連続カウント防止用フラグ
 
@@ -19,7 +19,7 @@ public class SoundCheck : MonoBehaviour
 
     void Start()
     {
-        VolumeOutValue = 60;
+        VolumeOutValue = 70;
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class SoundCheck : MonoBehaviour
             CountFlag = false;
         }
         // それ以外
-        else if(VolumeOutValue > micLevelMeter.VolumePercent)
+        else if(VolumeOutValue-3 > micLevelMeter.VolumePercent)
         {
             CountFlag = true;
         }
